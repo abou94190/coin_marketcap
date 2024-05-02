@@ -9,7 +9,7 @@ def get_exchange_info(exchange_id):
 
     try:
         response = requests.get(url, params=parameters)
-        response.raise_for_status()  # Raises an exception for 4xx or 5xx status codes
+        response.raise_for_status()  # Raises an exception
         data = response.json()
         filtered_data = {
             "url": data["data"][str(exchange_id)]["urls"],
