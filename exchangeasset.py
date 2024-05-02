@@ -1,10 +1,9 @@
 import requests
 
 
-def get_global_metrics():
-    url = "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest"
+def get_exchange_assets(exchange_id):
+    url = f"https://pro-api.coinmarketcap.com/v1/exchange/assets?id={exchange_id}"
     parameters = {
-        "convert": "BTC",
         "CMC_PRO_API_KEY": "34da595a-6f7a-4582-b18e-86508b7aaa94"
     }
 
@@ -17,9 +16,13 @@ def get_global_metrics():
         print("Error fetching data:", e)
         return None
 
-# Exemple d'utilisation :
+
+def main():
+    exchange_id = input("Enter the exchange ID: ")
+    exchange_assets = get_exchange_assets(exchange_id)
+    if exchange_assets:
+        print(exchange_assets)
 
 
-global_metrics = get_global_metrics()
-if global_metrics:
-    print(global_metrics)
+if __name__ == "__main__":
+    main()

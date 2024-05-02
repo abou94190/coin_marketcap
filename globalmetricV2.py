@@ -10,7 +10,7 @@ def get_global_metrics(metrics):
 
     try:
         response = requests.get(url, params=parameters)
-        response.raise_for_status()  # Raises an exception for 4xx or 5xx status codes
+        response.raise_for_status()  # Raises an exception
         data = response.json()
         
         if metrics == "all":
@@ -18,7 +18,7 @@ def get_global_metrics(metrics):
         elif metrics in data["data"]:
             return data["data"][metrics]
         else:
-            print("commande invalide.")
+            print("commande .")
             return None
     except requests.exceptions.RequestException as e:
         print("Error fetching data:", e)
