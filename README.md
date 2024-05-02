@@ -4,7 +4,9 @@
 
 Ce programme envoie une requête qui permettra de récuperer les métriques
 globales de la cryptomonnaie BTC en format json .
+
 Le programme nous propose ensuiste les métriques possible à entrer :
+        
         "all",
         "active_cryptocurrencies",
         "total_cryptocurrencies",
@@ -16,9 +18,11 @@ Le programme nous propose ensuiste les métriques possible à entrer :
         "altcoin_volume_24h_reported",
         "altcoin_market_cap",
         "last_updated"
+
 En choisir une pour récuperer les informations spécifiques à ce métrique.
 
 2- exchangeasset.py :
+
 Ce programme envoie une requête qui récupére les échanges d'actifs cryptos de parties tiers (entreprise par exemple).
 Entrer l'ID de la partie tiers voulue dans le programme . ( rechercher d'abord les ID's sur CoinMarketCap)
 
