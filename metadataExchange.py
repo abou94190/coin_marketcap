@@ -1,5 +1,5 @@
 import requests
-
+from dotenv import load_dotenv, find_dotenv
 
 def get_exchange_info(exchange_id):
     url = f"https://pro-api.coinmarketcap.com/v1/exchange/info?id={exchange_id}&aux=urls,logo,description,date_launched,notice"
