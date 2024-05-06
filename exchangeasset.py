@@ -1,4 +1,5 @@
 import requests
+from dotenv import load_dotenv
 
 
 def get_exchange_assets(exchange_id):

@@ -1,18 +1,24 @@
 import requests
+import json
+import os
+from dotenv import load_dotenv
+
+# Charger les variables d'environnement à partir du fichier .env
+load_dotenv()
 
 
 def get_global_metrics(metrics):
     url = "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest"
     parameters = {
         "convert": "BTC",
-        "CMC_PRO_API_KEY": "34da595a-6f7a-4582-b18e-86508b7aaa94"
+        "CMC_PRO_API_KEY": os.getenv("CMC_PRO_API_KEY")
     }
 
     try:
         response = requests.get(url, params=parameters)
         response.raise_for_status()  # Raises an exception
         data = response.json()
-        
+
         if metrics == "all":
             return data
         elif metrics in data["data"]:
@@ -23,6 +29,11 @@ def get_global_metrics(metrics):
     except requests.exceptions.RequestException as e:
         print("Error fetching data:", e)
         return None
+
+
+def save_data_to_file(data, filename):
+    with open(filename, 'w') as file:
+        json.dump(data, file, indent=4)
 
 
 def main():
@@ -47,6 +58,8 @@ def main():
     global_metrics = get_global_metrics(metrics_choice)
     if global_metrics:
         print(global_metrics)
+        save_data_to_file(global_metrics, 'global_metrics.json')
+        print("Data saved to global_metrics.json")
 
 
 if __name__ == "__main__":
